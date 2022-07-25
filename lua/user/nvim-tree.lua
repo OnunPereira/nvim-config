@@ -10,6 +10,16 @@ end
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
+-- nvim_tree.toggle = function(find_file, no_focus, cwd)
+--   local view = require "nvim-tree.view"
+--
+--   if view.is_visible() then
+--     view.close()
+--   end
+--   
+--   nvim_tree.open(cwd)
+-- end
+
 nvim_tree.setup {
   update_focused_file = {
     enable = true,
@@ -56,11 +66,12 @@ nvim_tree.setup {
   view = {
     width = 30,
     height = 30,
-    side = "left",
+    side = "right",
     mappings = {
       list = {
-        { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
+        { key = { "<CR>", "o" }, cb = tree_cb "edit" },
         { key = "h", cb = tree_cb "close_node" },
+        { key = "l", cb = tree_cb "open_node" },
         { key = "v", cb = tree_cb "vsplit" },
       },
     },
